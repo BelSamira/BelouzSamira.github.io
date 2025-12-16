@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samira Belouz - Chef de Projet Technique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-menu button {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #64748b;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .nav-menu button:hover,
+        .nav-menu button.active {
+            color: #22c55e;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 1rem;
+            padding: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: #22c55e;
+            opacity: 0.1;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #4ade80;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #22c55e;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #16a34a;
+        }
+
+        .btn-secondary {
+            background: #475569;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #334155;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        /* Card */
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: #dcfce7;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #16a34a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #64748b;
+        }
+
+        /* Projects */
+        .project-card {
+            background: white;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            padding: 2rem;
+            color: white;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-header h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: #334155;
+        }
+
+        .project-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .project-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-section i {
+            color: #16a34a;
+        }
+
+        .project-list {
+            list-style: none;
+        }
+
+        .project-list li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: #64748b;
+        }
+
+        .project-list i {
+            color: #22c55e;
+            margin-top: 0.25rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.5rem 1rem;
+            background: #f1f5f9;
+            color: #334155;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .project-impact {
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-style: italic;
+            color: #64748b;
+        }
+
+        /* Experience */
+        .experience-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .experience-card:hover {
+            border-color: #4ade80;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-company {
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .experience-period {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Skills */
+        .skills-card {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .skills-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        /* Formation */
+        .formation-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .formation-card:hover {
+            border-color: #4ade80;
+        }
+
+        .formation-icon {
+            width: 48px;
+            height: 48px;
+            background: #dcfce7;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #16a34a;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .formation-year {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #dcfce7;
+            color: #15803d;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-card p {
+            color: #64748b;
+        }
+
+        /* Languages */
+        .languages-section {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            color: white;
+            margin-top: 1.5rem;
+        }
+
+        .languages-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-item h3 {
+            color: #4ade80;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-item p {
+            color: #cbd5e1;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        footer p {
+            color: #94a3b8;
+        }
+
+        footer p:last-child {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 2rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: none;
+                border-top: 1px solid #e2e8f0;
+                padding: 1rem 0;
+            }
+
+            .mobile-menu.active {
+                display: block;
+            }
+
+            .mobile-menu button {
+                display: block;
+                width: 100%;
+                text-align: left;
+                padding: 0.75rem 1rem;
+                background: none;
+                border: none;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #64748b;
+                cursor: pointer;
+            }
+
+            .mobile-menu button.active {
+                color: #22c55e;
+                background: #dcfce7;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">SB</div>
+                <span class="logo-text">Samira Belouz</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><button onclick="showSection('accueil')" class="nav-btn active" data-section="accueil">Accueil</button></li>
+                <li><button onclick="showSection('projets')" class="nav-btn" data-section="projets">Projets</button></li>
+                <li><button onclick="showSection('formations')" class="nav-btn" data-section="formations">Formation</button></li>
+            </ul>
+
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <button onclick="showSection('accueil')" class="mobile-nav-btn active" data-section="accueil">Accueil</button>
+            <button onclick="showSection('projets')" class="mobile-nav-btn" data-section="projets">Projets</button>
+            <button onclick="showSection('formations')" class="mobile-nav-btn" data-section="formations">Formation</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Section Accueil -->
+        <div id="accueil" class="section fade-in">
+            <!-- Hero -->
+            <div class="hero">
+                <div class="hero-content">
+                    <span class="status-badge">Disponible pour nouvelles opportunités</span>
+                    <h1>Samira Belouz</h1>
+                    <h2>Chef de Projet Technique</h2>
+                    <p>Plus de 8 ans d'expérience en gestion de projets SCADA, hypervision et systèmes de télégestion pour l'eau potable et l'assainissement.</p>
+                    <div class="hero-buttons">
+                        <a href="mailto:belouz.samira@gmail.com" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                            Me contacter
+                        </a>
+                        <button onclick="showSection('projets')" class="btn btn-secondary">
+                            Voir mes projets
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Cards -->
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>belouz.samira@gmail.com</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Téléphone</h3>
+                    <p>06.43.42.95.38</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Localisation</h3>
+                    <p>Toulouse, 31200</p>
+                </div>
+            </div>
+
+            <!-- Experience -->
+            <div style="margin-top: 4rem;">
+                <h2 class="section-title">Expérience Professionnelle</h2>
+                
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Responsable Pôle d'Automatisme – Télégestion</h3>
+                            <p class="experience-company">Réseau31</p>
+                        </div>
+                        <span class="experience-period">11/2023 - Présent</span>
+                    </div>
+                    <ul class="project-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Gestion des systèmes et infrastructures informatiques industriels</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Pilotage du projet "Hypervision – Supervision" de la conception à la mise en service</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Modernisation du système SCADA avec technologies innovantes</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Encadrement d'équipes et gestion des plannings opérationnels</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div class="experience-title">
+                            <h3>Chef de Projet en Instrumentation</h3>
+                            <p class="experience-company">ASTEO, SUEZ</p>
+                        </div>
+                        <span class="experience-period">08/2020 - 11/2023</span>
+                    </div>
+                    <ul class="project-list">
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Planification des interventions métrologiques et gestion budgétaire</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Configuration des capteurs sur supervision TOPKAPI</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-chevron-right"></i>
+                            <span>Maintenance des programmes automate et validation ISO 9001</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div style="margin-top: 4rem;">
+                <h2 class="section-title">Compétences Clés</h2>
+                <div class="grid grid-3">
+                    <div class="skills-card">
+                        <h3>Gestion de Projet</h3>
+                        <div class="skill-item"><span class="skill-dot"></span> Méthodes SCADA</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Planification opérationnelle</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Budgets prévisionnels</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Gestion des risques</div>
+                        <div class="skill-item"><span class="skill-dot"></span> KPI</div>
+                    </div>
+                    <div class="skills-card">
+                        <h3>Technique</h3>
+                        <div class="skill-item"><span class="skill-dot"></span> SCADA TOPKAPI</div>
+                        <div class="skill-item"><span class="skill-dot"></span> IGNITION</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Automates Schneider/Siemens</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Supervision industrielle</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Télégestion</div>
+                    </div>
+                    <div class="skills-card">
+                        <h3>Management</h3>
+                        <div class="skill-item"><span class="skill-dot"></span> Leadership</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Coordination d'équipes</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Gestion sous-traitants</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Communication</div>
+                        <div class="skill-item"><span class="skill-dot"></span> Reporting</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Projets -->
+        <div id="projets" class="section hidden">
+            <h1 class="section-title">Mes Projets</h1>
+            <p class="section-subtitle">Portfolio de réalisations techniques et managériales</p>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-category">SCADA / Supervision</span>
+                    <h2>Projet Hypervision - Supervision</h2>
+                    <p>2023 - Présent</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Pilotage complet d'un projet d'hypervision pour Réseau31, de la conception à la mise en service.</p>
+                    
+                    <div class="project-section">
+                        <h3><i class="fas fa-briefcase"></i> Responsabilités</h3>
+                        <ul class="project-list">
+                            <li><i class="fas fa-chevron-right"></i> Audit des besoins et analyse de l'existant (SCADA TOPKAPI et IGNITION)</li>
+                            <li><i class="fas fa-chevron-right"></i> Étude de scénarios SCADA/Hypervision spécifiques pour Réseau31</li>
+                            <li><i class="fas fa-chevron-right"></i> Rédaction du CCTP et des documents administratifs du marché public</li>
+                            <li><i class="fas fa-chevron-right"></i> Coordination des équipes techniques et suivi des prestataires</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h3><i class="fas fa-code"></i> Technologies</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">SCADA</span>
+                            <span class="tech-tag">TOPKAPI</span>
+                            <span class="tech-tag">IGNITION</span>
+                            <span class="tech-tag">Supervision industrielle</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h3><i class="fas fa-chart-line"></i> Impact</h3>
+                        <p>Modernisation complète du système de supervision avec intégration de technologies innovantes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-category">Analyse & Diagnostic</span>
+                    <h2>Diagnostic et Refonte Projet IGNITION</h2>
+                    <p>2024</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Suite à l'arrêt du projet, réalisation d'un diagnostic approfondi pour identifier l'origine des problèmes et proposer des solutions correctives.</p>
+                    
+                    <div class="project-section">
+                        <h3><i class="fas fa-briefcase"></i> Responsabilités</h3>
+                        <ul class="project-list">
+                            <li><i class="fas fa-chevron-right"></i> Diagnostic technique et organisationnel approfondi</li>
+                            <li><i class="fas fa-chevron-right"></i> Évaluation des impacts sur l'infrastructure existante</li>
+                            <li><i class="fas fa-chevron-right"></i> Proposition de solutions correctives et alternatives</li>
+                            <li><i class="fas fa-chevron-right"></i> Stratégie de relance ou réorientation du projet</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h3><i class="fas fa-code"></i> Technologies</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">IGNITION</span>
+                            <span class="tech-tag">Analyse système</span>
+                            <span class="tech-tag">Architecture SCADA</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h3><i class="fas fa-chart-line"></i> Impact</h3>
+                        <p>Identification des causes racines et définition d'un plan d'action pour relancer le projet</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-category">Instrumentation & Métrologie</span>
+                    <h2>Gestion d'Instrumentation Réseau</h2>
+                    <p>2020 - 2023</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Chef de projet en instrumentation chez ASTEO (SUEZ) avec gestion complète du parc de capteurs.</p>
+                    
+                    <div class="project-section">
+                        <h3><i class="fas fa-briefcase"></i> Responsabilités</h3>
+                        <ul class="project-list">
+                            <li><i class="fas fa-chevron-right"></i> Planification des interventions métrologiques sur le réseau</li>
+                            <li><i class="fas fa-chevron-right"></i> Gestion budgétaire annuelle (achats et renouvellement des capteurs)</li>
+                            <li><i class="fas fa-chevron-right"></i> Configuration des capteurs sur supervision TOPKAPI</li>
+                            <li><i class="fas fa-chevron-right"></i> Maintenance et modification des programmes automates</li>
+                            <li><i class="fas fa-chevron-right"></i> Coordination des sous-traitants et validation ISO 9001</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h3><i class="fas fa-code"></i> Technologies</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">TOPKAPI</span>
+                            <span class="tech-tag">Automates</span>
+                            <span class="tech-tag">Capteurs réseau</span>
+                            <span class="tech-tag">Télégestion</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h3><i class="fas fa-chart-line"></i> Impact</h3>
+                        <p>Optimisation de la performance du réseau avec suivi en temps réel des données</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-category">Automatisation</span>
+                    <h2>Systèmes de Télégestion</h2>
+                    <p>2012 - 2015</p>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">Ingénieur en maintenance pour les systèmes de télégestion et télé­contrôle en Algérie.</p>
+                    
+                    <div class="project-section">
+                        <h3><i class="fas fa-briefcase"></i> Responsabilités</h3>
+                        <ul class="project-list">
+                            <li><i class="fas fa-chevron-right"></i> Installation et maintenance de débitmètres ultrasoniques et électromagnétiques</li>
+                            <li><i class="fas fa-chevron-right"></i> Programmation d'automates TWIDO Schneider et S7-200/S7-300 Siemens</li>
+                            <li><i class="fas fa-chevron-right"></i> Configuration de modems de communication SYSCOM et EWON</li>
+                            <li><i class="fas fa-chevron-right"></i> Assurance du bon fonctionnement des systèmes de télégestion</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h3><i class="fas fa-code"></i> Technologies</h3>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Automates Schneider</span>
+                            <span class="tech-tag">Siemens S7</span>
+                            <span class="tech-tag">Débitmètres</span>
+                            <span class="tech-tag">Modems industriels</span>
+                        </div>
+                    </div>
+
+                    <div class="project-impact">
+                        <h3><i class="fas fa-chart-line"></i> Impact</h3>
+                        <p>Fiabilisation des systèmes de télégestion pour l'eau potable et l'assainissement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Formations -->
+        <div id="formations" class="section hidden">
+            <h1 class="section-title">Formation & Certifications</h1>
+            <p class="section-subtitle">Parcours académique et formations continues</p>
+
+            <div class="grid grid-3">
+                <div class="formation-card">
+                    <div class="formation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="formation-year">2025</span>
+                        <h3>Formation Ignition niveau 1</h3>
+                        <p>HMI-SCADA, Architecture SQL</p>
+                    </div>
+                </div>
+
+                <div class="formation-card">
+                    <div class="formation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="formation-year">2024</span>
+                        <h3>Formation DATA-VIZ</h3>
+                        <p>Conception de tableaux de bord</p>
+                    </div>
+                </div>
+
+                <div class="formation-card">
+                    <div class="formation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="formation-year">2020</span>
+                        <h3>Formation Lacroix Environnement</h3>
+                        <p>Sofrel S4W</p>
+                    </div>
+                </div>
+
+                <div class="formation-card">
+                    <div class="formation-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <span class="formation-year">2011</span>
+                        <h3>Diplôme d'Ingénieur</h3>
+                        <p>Automatique - Université d'Oran</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="languages-section">
+                <h2>Langues</h2>
+                <div class="languages-grid">
+                    <div class="language-item">
+                        <h3>Français</h3>
+                        <p>Courant (Oral/Écrit)</p>
+                    </div>
+                    <div class="language-item">
+                        <h3>Anglais</h3>
+                        <p>Professionnel (B1)</p>
+                    </div>
+                    <div class="language-item">
+                        <h3>Arabe</h3>
+                        <p>Langue maternelle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>© 2024 Samira Belouz - Chef de Projet Technique</p>
+            <p>Spécialisée en SCADA, Hypervision et Télégestion</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            document.getElementById(sectionName).classList.add('fade-in');
+            
+            // Update navigation buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.section === sectionName) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Update mobile navigation buttons
+            document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.section === sectionName) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu
+            document.getElementById('mobileMenu').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
